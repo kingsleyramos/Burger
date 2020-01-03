@@ -1,12 +1,12 @@
 const connection = require("./connection.js");
 
 const orm = {
-    selectAll: function(tableInput) {
-        const queryString = "SELECT * FROM ??";
+    selectAll: function(tableInput, callback) {
+        const queryString = "SELECT * FROM " + tableInput;
 
-        connection.query(queryString, [tableInput], function(err, result) {
+        connection.query(queryString, function(err, result) {
             if (err) throw err;
-            return result;
+            callback(result);
         });
     },
     insertOne: function(tableInput, colOneInput, colTwoInput, colOneValue, colTwoValue) {
