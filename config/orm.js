@@ -9,28 +9,21 @@ const orm = {
             callback(result);
         });
     },
-    insertOne: function(tableInput, colOneInput, colTwoInput, colOneValue, colTwoValue) {
-        const queryString = "INSERT INTO ?? (??, ??) VALUES ('??', ??)";
+    insertOne: function(tableInput, colOneInput, colTwoInput, colOneValue, colTwoValue, callback) {
+        const queryString = `INSERT INTO ${tableInput} (${colOneInput}, ${colTwoInput}) VALUES ('${colOneValue}', ${colTwoValue})`;
 
-        connection.query(queryString, [tableInput, colOneInput, colTwoInput, colOneValue, colTwoValue], function(err, result) {
+        connection.query(queryString, function(err, result) {
             if (err) throw err;
-            return result;
+            callback(result);
         });
     },
     updateOne: function(tableInput, setCol, setColVal, whereCol, whereColVal, callback) {
         const queryString = `UPDATE ${tableInput} SET ${setCol} = ${setColVal} WHERE ${whereCol} = ${whereColVal}`;
-        // console.log(tableInput);
-        // console.log(setCol);
-        // console.log(setColVal);
-        // console.log(whereCol);
-        // console.log(whereColVal);
         connection.query(queryString, function(err, result) {
-            //console.log(result);
             console.log("orm.updateOne HIT");
             if (err) throw err;
             callback(result);
-        }
-        );
+        });
     }
 };
 
