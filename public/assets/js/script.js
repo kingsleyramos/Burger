@@ -15,6 +15,23 @@ $(document).ready(function() {
         );
 
     });
+
+    $(".deleteBtn").on("click", function(event){
+        const id = $(this).data("id");
+
+        console.log ("click");
+            // Send the PUT request.
+        $.ajax("/api/hamburger/" + id, {
+            type: "DELETE"
+        }).then(function() {
+
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
+    });
+
+
     $(".create-form").on("submit", function(event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
