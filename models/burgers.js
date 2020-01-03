@@ -9,8 +9,12 @@ const burgers = {
     insert: function(burgerNAme, devoured) {
         orm.insertOne("burgers", "burger_name", "devoured", burgerNAme, devoured);
     },
-    update: function(burgerNAme, updateDevoured) {
-        orm.updateOne("burgers", "devoured", updateDevoured, "burger_name", burgerNAme);
+    update: function(id, devoured, callback) {
+        orm.updateOne("burgers", "devoured", devoured, "id", id, function(res){
+            // console.log("burgers.update HIT");
+            callback(res);
+        }
+        );
     }
 };
 
