@@ -1,0 +1,21 @@
+<h1>hamburgers</h1>
+
+<h2>hamburgers to be DEVOURED</h2>
+
+<ul>
+  {{#each hamburgers}}
+    {{#unless devoured}}
+    <li>{{id}} - {{burger_name}}</li><button class="devourBtn" data-id="{{id}}">DEVOUR</button>
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>DEVOURED Hamburgers</h2>
+
+<ul>
+  {{#each hamburgers}}
+    {{#if devoured}}
+    <li>{{id}} - {{burger_name}}</li>
+    {{/if}}
+  {{/each}}
+</ul>
