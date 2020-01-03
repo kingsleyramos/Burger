@@ -19,6 +19,11 @@ const burgers = {
             // console.log("burgers.update HIT");
             callback(res);
         });
+    },
+    delete: function(id, callback){
+        orm.delete("burgers", "id", id, function(res){
+            callback(res);
+        });
     }
 };
 
