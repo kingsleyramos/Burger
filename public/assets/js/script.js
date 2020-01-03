@@ -8,13 +8,30 @@ $(document).ready(function() {
         $.ajax("/api/hamburger/" + id, {
             type: "PUT"
         }).then(function() {
-                console.log("changed to DEVOURED");
+
                 // Reload the page to get the updated list
                 location.reload();
             }
         );
 
     });
+    $(".create-form").on("submit", function(event) {
+        // Make sure to preventDefault on a submit event.
+        event.preventDefault();
+        let burgerName = {
+            name: $("#burgerName").val().trim()
+        };                               
 
+        // Send the POST request.
+        $.ajax("/api/hamburger", {
+        type: "POST",
+        data: burgerName
+        }).then(
+        function() {
+            // Reload the page to get the updated list
+            location.reload();
+        }
+        );
+    });
 
 }); // Ending of Ready Function
