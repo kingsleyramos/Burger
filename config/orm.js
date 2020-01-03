@@ -2,9 +2,9 @@ const connection = require("./connection.js");
 
 const orm = {
     selectAll: function(tableInput, callback) {
-        const queryString = "SELECT * FROM " + tableInput;
+        const queryString = "SELECT * FROM ??";
 
-        connection.query(queryString, function(err, result) {
+        connection.query(queryString, [tableInput], function(err, result) {
             if (err) throw err;
             callback(result);
         });
@@ -17,13 +17,20 @@ const orm = {
             return result;
         });
     },
-    updateOne: function(tableInput, setCol, setColVal, whereCol, whereColVal) {
-        const queryString = "UPDATE ?? SET ?? = ?? WHERE ?? = ?";
-
-        connection.query(queryString, [tableInput, setCol, setColVal, whereCol, whereColVal], function(err, result) {
+    updateOne: function(tableInput, setCol, setColVal, whereCol, whereColVal, callback) {
+        const queryString = `UPDATE ${tableInput} SET ${setCol} = ${setColVal} WHERE ${whereCol} = ${whereColVal}`;
+        // console.log(tableInput);
+        // console.log(setCol);
+        // console.log(setColVal);
+        // console.log(whereCol);
+        // console.log(whereColVal);
+        connection.query(queryString, function(err, result) {
+            //console.log(result);
+            console.log("orm.updateOne HIT");
             if (err) throw err;
-            return result;
-        });
+            callback(result);
+        }
+        );
     }
 };
 
