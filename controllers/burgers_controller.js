@@ -1,19 +1,20 @@
 const express = require("express");
 const router = express.Router();
 
-const burger = require("../models/burgers");
+const burgers = require("../models/burgers");
 
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
-    // cat.all(function(data) {
-    //   var hbsObject = {
-    //     cats: data
-    //   };
-    //   console.log(hbsObject);
-    //   res.render("index", hbsObject);
-    // });
-  });
+      console.log("router.get");
+
+      burgers.selectAll(function(data) {
+
+        console.log(data);
+        return res.render("index", { hamburgers: data });
+        //res.json(hamburgerObjects);
+      });
+});
   
   router.post("/api/cats", function(req, res) {
     // cat.create([
@@ -24,7 +25,7 @@ router.get("/", function(req, res) {
     //   // Send back the ID of the new quote
     //   res.json({ id: result.insertId });
     // });
-  });
+});
   
   router.put("/api/cats/:id", function(req, res) {
     // var condition = "id = " + req.params.id;
@@ -41,7 +42,7 @@ router.get("/", function(req, res) {
     //     res.status(200).end();
     //   }
     // });
-  });
+});
   
   router.delete("/api/cats/:id", function(req, res) {
     // var condition = "id = " + req.params.id;
@@ -54,7 +55,7 @@ router.get("/", function(req, res) {
     //     res.status(200).end();
     //   }
     // });
-  });
+});
   
   // Export routes for server.js to use.
   module.exports = router;
