@@ -24,6 +24,14 @@ const orm = {
             if (err) throw err;
             callback(result);
         });
+    },
+    delete: function(tableInput, whereCol, whereColVal, callback){
+        const queryString = `DELETE FROM ${tableInput} WHERE ${whereCol} = ${whereColVal}`;
+        connection.query(queryString, function(err, result){
+            console.log("orm.delete HIT");
+            if (err) throw err;
+            callback(result);
+        });
     }
 };
 
