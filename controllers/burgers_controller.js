@@ -5,10 +5,10 @@ const burgers = require("../models/burgers");
 
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/", function(req, res) {
+router.get("/", (req, res) => {
     //console.log("router.get");
 
-    burgers.selectAll(function(data) {
+    burgers.selectAll((data) => {
 
       //console.log(data);
       // res.json({ hamburgers: data });
@@ -16,10 +16,10 @@ router.get("/", function(req, res) {
     });
 });
   
-router.post("/api/hamburger", function(req, res) {
+router.post("/api/hamburger", (req, res) => {
 
   console.log("req.body.name: ", req.body.name);
-  burgers.insert(req.body.name, false, function(result){
+  burgers.insert(req.body.name, false, (result) => {
 
     if (result.changedRows == 1) {
       // If no rows were changed, then the ID must not exist, so 404
@@ -30,10 +30,10 @@ router.post("/api/hamburger", function(req, res) {
   });
 });
   
-  router.put("/api/hamburger/:id", function(req, res) {
+  router.put("/api/hamburger/:id", (req, res) => {
     const id = req.params.id;
   
-    burgers.update(id, true, function(result){
+    burgers.update(id, true, (result) => {
 
       if (result.changedRows == 0) {
         // If no rows were changed, then the ID must not exist, so 404
@@ -44,10 +44,10 @@ router.post("/api/hamburger", function(req, res) {
     });
 });
   
-  router.delete("/api/hamburger/:id", function(req, res) {
+  router.delete("/api/hamburger/:id", (req, res) => {
     const id = req.params.id;
     
-    burgers.delete(id, function(result) {
+    burgers.delete(id, (result) => {
 
       console.log(result);
       if (result.affectedRows == 0) {

@@ -1,13 +1,13 @@
 $(document).ready(function() {
 
-    $(".devourBtn").on("click", function(event){
+    $(".devourBtn").on("click", function(event) {
         const id = $(this).data("id");
 
         console.log ("click");
             // Send the PUT request.
         $.ajax("/api/hamburger/" + id, {
             type: "PUT"
-        }).then(function() {
+        }).then(() => {
 
                 // Reload the page to get the updated list
                 location.reload();
@@ -16,14 +16,14 @@ $(document).ready(function() {
 
     });
 
-    $(".deleteBtn").on("click", function(event){
+    $(".deleteBtn").on("click", function(event) {
         const id = $(this).data("id");
 
         console.log ("click");
             // Send the PUT request.
         $.ajax("/api/hamburger/" + id, {
             type: "DELETE"
-        }).then(function() {
+        }).then(() => {
 
                 // Reload the page to get the updated list
                 location.reload();
@@ -43,8 +43,7 @@ $(document).ready(function() {
         $.ajax("/api/hamburger", {
         type: "POST",
         data: burgerName
-        }).then(
-        function() {
+        }).then(() => {
             // Reload the page to get the updated list
             location.reload();
         }
