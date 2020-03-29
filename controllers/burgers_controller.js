@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
 
     // returns all burgers from database to index.handlebars
     burgers.selectAll((data) => {
-      return res.render("index", { hamburgers: data });
+      res.render("index", { hamburgers: data });
     });
 });
   
