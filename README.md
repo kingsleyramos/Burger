@@ -1,10 +1,23 @@
 # Homework 13: Burger
 
-## Project Goal
+This application will log the burgers you will and the the burgers you have eaten so you can always remember those great burgers.
 
-Burger logger that uses MySQL, Node, Express, Handlebars and a homemade ORM (yum!).
+## Click [Here](https://kingsleyramos-burger.herokuapp.com/) for deployed application.
+---
+![](images/burger.gif)
 
-## Challenges
+## Tool & Resources
+---
+* [Bootstrap](https://getbootstrap.com/) - CSS framework used
+* [JQuery](https://getbootstrap.com/) - JavaScript library used
+* [Heroku](https://www.heroku.com/) - Used to deploy the application and the MySQL database
+    ### Dependencies
+    ---
+    * [Express](https://expressjs.com/) - Node Framework used
+    * [Handlebars](https://handlebarsjs.com/) - Templating Engine used
+    * [mysql](https://www.npmjs.com/package/mysql) - Used to connect to the MySQL database and perform queries
+
+## Assignment Challenges
 
 ### AJAX calls and callbacks
 
